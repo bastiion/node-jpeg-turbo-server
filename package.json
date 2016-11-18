@@ -1,0 +1,25 @@
+{
+  "name": "jpeg-thumbnail-server",
+  "description": "A description.",
+  "keywords": [
+    "jpeg",
+    "exif",
+    "image",
+    "scaler"
+  ],
+  "homepage": "http://some.name/",
+  "version": "0.0.1",
+  "author": {
+    "name": "Sebastian Tilsch",
+    "email": "djcompilation@gmx.de",
+    "url": ""
+  },
+  "dependencies": {
+    "exif-parser": "^0.1.9",
+    "express": "^4.13.3",
+    "gulp-express": "^0.3.5",
+    "jpeg-turbo": "git://github.com/bastiion/node-jpeg-turbo#master",
+    "lodash": "^3.10.1",
+    "q": "^1.4.1"
+  }
+}
