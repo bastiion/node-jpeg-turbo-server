@@ -18,22 +18,26 @@ var getTurboImage =  function(path, scale, quality) {
     fs.readFile(path, function (err, data) {
         l('Will decompress image');
         var buffer, buffer2;
-        var result = jpegturbo.decompressSync(data, {
-            format: 'FORMAT_RGB',
-            out: buffer,
-            scalenum: scale
-        });
-        l('Finish decompress ');
-        l(result);
-        var result2 = jpegturbo.compressSync(result.data, {
-            format: 'FORMAT_RGB',
-            out: buffer2,
-            width: result.width,
-            height: result.height,
-            quality: quality
-        });
-        l(result2);
-        deffered.resolve(result2.data);
+	try {
+          var result = jpegturbo.decompressSync(data, {
+              format: 'FORMAT_RGB',
+              out: buffer,
+              scalenum: scale
+          });
+          l('Finish decompress ');
+          l(result);
+          var result2 = jpegturbo.compressSync(result.data, {
+              format: 'FORMAT_RGB',
+              out: buffer2,
+              width: result.width,
+              height: result.height,
+              quality: quality
+          });
+          l(result2);
+          deffered.resolve(result2.data);
+	} catch(e) {
+	  deffered.reject();
+	}
     });
     return deffered.promise;
 };
